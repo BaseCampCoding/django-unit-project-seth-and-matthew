@@ -8,5 +8,4 @@ class Customuser(AbstractUser):
     points = models.PositiveIntegerField()
     streak = models.PositiveIntegerField()
     longest_streak = models.PositiveIntegerField()
-    answered = models.JSONField()
     # badges = ArrayField(models.PositiveIntegerField(), size=)
