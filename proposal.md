@@ -20,7 +20,7 @@ We want to allow users to submit answers to a random question. We would also lik
 We will make user profile pages, along with the badge system mentioned above (Matthew). We also want to make the landing page fully functional (Seth).
 ### *Week 2*
 ### Monday
-We will first have a pair review over our current state with the project and decide whether we will continue on pace, cut back on the project, or add on to it. Afterwards, we will both focus on expanding upon our question library.
+We will first have a pair review over our current state with the project and decide whether we will continue on pace, cut back on the project, or add on to it. Afterwards, we will both focus on expanding upon our question library. Our goal is to get around 20 questions for each category.
 ### Tuesday
 We will add various badges for achieving certain question counts (Matthew). We will also work on the challenge system, where users will be presented with x questions, depending on which difficulty they choose (Easy, Medium, Hard),  that they must answer correctly in a row for a special prize (Seth).
 ### Wednesday
