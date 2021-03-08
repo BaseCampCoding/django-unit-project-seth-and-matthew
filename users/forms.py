@@ -11,7 +11,6 @@ class CreateUserForm(UserCreationForm):
             "points",
             "streak",
             "longest_streak",
-            "answered",
         ]
 
 
