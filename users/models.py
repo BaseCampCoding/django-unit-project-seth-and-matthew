@@ -8,4 +8,4 @@ class CustomUser(AbstractUser):
     points = models.PositiveIntegerField(default=0)
     streak = models.PositiveIntegerField(default=0)
     longest_streak = models.PositiveIntegerField(default=0)
-    # badges = ArrayField(models.PositiveIntegerField(), size=)
+    badges = models.CharField(max_length=100, default="")
