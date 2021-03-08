@@ -10,8 +10,10 @@
     <label><input name="input" type="radio" value="4" required>4.</label>
     <br> -->
      {% csrf_token %}
-     <td>{{ form.answer }}</td>
+     {{ form.as_p }}
      <input type="hidden" name="q_id" value="{{ question.id }}" />
-     <button class="btn btn-primary">Submit</button>
+     
+        <input type="submit" value="submit">
+    
 </form>
 {% endblock content %}
