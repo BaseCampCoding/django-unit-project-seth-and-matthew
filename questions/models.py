@@ -1,3 +1,7 @@
 from django.db import models
-
-# Create your models here.
+from django.contrib.postgres.fields import ArrayField
+class Question(models.Model):
+    possible_answers = ArrayField(modes.CharField(max_length=120, size=4))
+    category = models.CharField(max_length=30)
+    correct_answer = models.CharField(max_length=120)
+    description = models.TextField()
