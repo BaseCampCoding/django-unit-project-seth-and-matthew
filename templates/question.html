@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST">
+    <!-- <label><input name="input" type="radio" value="1" required>1.</label>
+    <br>
+    <label><input name="input" type="radio" value="2" required>2.</label>
+    <br>
+    <label><input name="input" type="radio" value="3" required>3.</label>
+    <br>
+    <label><input name="input" type="radio" value="4" required>4.</label>
+    <br> -->
+     {% csrf_token %}
+     <td>{{ form.answer }}</td>
+     <input type="hidden" name="q_id" value="{{ question.id }}" />
+     <button class="btn btn-primary">Submit</button>
+</form>
+{% endblock content %}
