@@ -8,9 +8,6 @@ class CreateUserForm(UserCreationForm):
         fields = [
             "username",
             "email",
-            "points",
-            "streak",
-            "longest_streak",
         ]
 
 
