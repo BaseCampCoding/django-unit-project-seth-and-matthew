@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <header>
+        <h1>{{ user.username }}</h1>
+    </header>
+    <div>
+        <h3>{{ user.username }}'s Stats</h3>
+        <p>Current Streak: {{ user.streak }}</p>
+        <p>Longest Streak: {{ user.longest_streak }}</p>
+    </div>
+</div>
+{% endblock content %}
