@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="landing">
-    <div class="d-flex justify-content-center align-items-center">
-        <h1 class="header">
-            Welcome to Quizgo!
-        </h1>
+<div id="landing" class="grid-container">
+    <div class="item1">
+        <h1 class="header">Welcome to Quizgo!</h1>
+        <p>Click the button on the right to start answering random questions from any category! Each time you get a question right, you earn points! The more questions you get right in a row, the more points you earn for each question!</p>
     </div>
-    <div class="d-flex justify-content-center">
-        <a href="{% url 'question' random_number %}" class="text-decoration-none"><button class="text-black-50 font-weight-bold btn btn-success btn-lg btn-huge ml-6">Play!</button></a>
+    <div class="item2">
+        <a href="{% url 'question' random_number %}" class="text-decoration-none">
+            <button class="text-black-50 font-weight-bold btn btn-light btn-lg btn-huge">Play!</button>
+        </a>
     </div>
 </div>
 <div id="main-page bg-light">
