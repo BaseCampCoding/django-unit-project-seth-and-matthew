@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+<strong>Current Points: {{ user.points }}</strong>
+<br>
+<strong>Current Streak: {{ user.streak }}</strong>
+<br>
+<strong>Longest Streak: {{ user.longest_streak }}</strong>
+<br>
 <p>{{ question.description }}</p>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -9,6 +15,6 @@
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice }}">
     <label for="choice{{ forloop.counter }}">{{ choice }}</label><br>
 {% endfor %}
-<input type="submit" value="Vote">
+<input type="submit" value="Submit and Move to next question">
 </form>
 {% endblock content %}

@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+import random
 # Create your views here.
 
 def AnswerQuestion(request, question_id):
@@ -16,7 +17,7 @@ def AnswerQuestion(request, question_id):
         # Redisplay the question voting form.
         return render(request, 'question.html', {
             'question': question,
-            'error_message': "You didn't select a choice.",
+            'error_message': "Please pick an answer",
         })
     else:
         # Always return an HttpResponseRedirect after successfully dealing
@@ -31,4 +32,8 @@ def AnswerQuestion(request, question_id):
                 request.user.longest_streak = request.user.streak
             request.user.streak = 0
         request.user.save()
-        return HttpResponseRedirect(reverse('home'))
+        q_size = Question.objects.count()
+        ran = random.randint(1, q_size)
+        while ran == question_id:
+            ran = random.randint(1,q_size)
+        return HttpResponseRedirect(reverse('question', args=(ran,)))
