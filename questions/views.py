@@ -1,21 +1,28 @@
 from django.shortcuts import render
 from django.views.generic import UpdateView, View
-from .forms import Answer
+from .forms import AnswerForm
 from .models import Question
 from django.urls import reverse_lazy
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 # Create your views here.
 
-class AnswerQuestion(UpdateView):
-    model = Question
-    form = Answer
-    fields = []
-    template_name = "question.html"
-    success_url = reverse_lazy("home")
-    def form_valid(self, form):
-        instance = Question.objects.get(id=self.request.resolver_match.kwargs["pk"])
-        print("WHAT", self.request.POST.get("answer"))
-        if self.request.POST.get("answer") == instance.correct_answer:
-            print("WOOOOP")
-        else:
-            print("DEPRESSION")
-        return super().form_valid(form)
+def AnswerQuestion(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_choice = request.POST['choice']
+    except:
+        # Redisplay the question voting form.
+        return render(request, 'question.html', {
+            'question': question,
+            'error_message': "You didn't select a choice.",
+        })
+    else:
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        print("sel", selected_choice)
+        if int(selected_choice) == question.correct_answer:
+            print("AAAAAAAAAAAAAAAAAAAAAAAA")
+        return HttpResponseRedirect(reverse('home'))
