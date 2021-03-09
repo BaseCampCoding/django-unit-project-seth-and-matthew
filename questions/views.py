@@ -22,7 +22,13 @@ def AnswerQuestion(request, question_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        print("sel", selected_choice)
         if int(selected_choice) == question.correct_answer:
-            print("AAAAAAAAAAAAAAAAAAAAAAAA")
+            streak = request.user.streak
+            request.user.points += 10 + ((streak)*5)
+            request.user.streak += 1
+        else:
+            if request.user.streak > request.user.longest_streak:
+                request.user.longest_streak = request.user.streak
+            request.user.streak = 0
+        request.user.save()
         return HttpResponseRedirect(reverse('home'))
