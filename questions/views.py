@@ -7,12 +7,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 import random
+from users.views import get_possible_questions_id
 # Create your views here.
 
 def AnswerQuestion(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = request.POST['choice']
+        
     except:
         # Redisplay the question voting form.
         return render(request, 'question.html', {
@@ -32,8 +34,19 @@ def AnswerQuestion(request, question_id):
                 request.user.longest_streak = request.user.streak
             request.user.streak = 0
         request.user.save()
-        q_size = Question.objects.count()
-        ran = random.randint(1, q_size)
-        while ran == question_id:
-            ran = random.randint(1,q_size)
-        return HttpResponseRedirect(reverse('question', args=(ran,)))
+        print("REQUEST", request.GET)
+        is_random = request.GET.get('r', None)
+        print("IS_RANDOM", is_random)
+        if is_random:
+            k = "?r=t"
+            q_size = Question.objects.count()
+            ran = random.randint(1, q_size)
+            while ran == question_id:
+                ran = random.randint(1,q_size)
+        else:
+            k = "?r=t"
+            ran = question_id
+            while ran == question_id:
+                ran = get_possible_questions_id(question.category)
+        return HttpResponseRedirect("/question/" + str(ran) + "/" + k)
+        #return HttpResponseRedirect(reverse('question', args=(ran,)))

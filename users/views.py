@@ -18,7 +18,6 @@ def get_possible_questions_id(q_category):
     this function returns the PK of a random question object that fits the question category.
     """
     q_ids = Question.objects.filter(category=q_category).values_list("pk", flat=True)
-    print(q_category)
     q_ids = list(q_ids)
     maxi_id = max(q_ids)
     ran = None
