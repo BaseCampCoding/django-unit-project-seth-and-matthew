@@ -58,6 +58,17 @@ class UserProfile(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = "users/user_profile.html"
     context_object_name = "profile_user"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        result = []
+        temp_badge = str(self.object.badges)
+        lent = len(temp_badge)
+        i = 0
+        while i < lent:
+            result.append('images/' + temp_badge[i] + temp_badge[i+1] + '.png')
+            i += 2
+        context['badge_list'] = result
+        return context
 
 class LeaderboardView(ListView):
     model = get_user_model()

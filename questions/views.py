@@ -51,6 +51,10 @@ def AnswerQuestion(request, question_id):
                 request.user.max_challenge_streak = 0
         if request.user.streak > request.user.longest_streak:
             request.user.longest_streak = request.user.streak
+        badge = check_badge(request.user.points, request.user.streak, str(request.user.badges))
+        while badge:
+            request.user.badges = str(request.user.badges) + badge
+            badge = check_badge(request.user.points, request.user.streak, str(request.user.badges))
         request.user.save()
         if congrats:
             return HttpResponseRedirect("/congrats/?earned="+str(congrats))
@@ -68,3 +72,30 @@ def AnswerQuestion(request, question_id):
                 ran = get_possible_questions_id(question.category)
         return HttpResponseRedirect("/question/" + str(ran) + "/" + k)
         #return HttpResponseRedirect(reverse('question', args=(ran,)))
+# list of tuples to store badge data
+# (type, value, id)
+badge_conditions =[
+    (0, 10, '01'),
+    (0, 25, '02'),
+    (0, 50, '03'),
+    (0, 100, '04'),
+    (1, 1000, '05'),
+    (1, 2500, '06'),
+    (1, 5000, '07'),
+    (1, 10000, '08'),
+    (1, 25000, '09'),
+    (1, 50000, '10'),
+    (1, 100000, '11'),
+]
+def check_badge(points, streak, badge_str):
+    re_value = None
+    for con in badge_conditions:
+        if con[0] == 0:
+            if streak >= con[1] and not con[2] in badge_str:
+                re_value = con[2]
+                break
+        if con[0] == 1:
+            if points >= con[1] and not con[2] in badge_str:
+                re_value = con[2]
+                break
+    return re_value
