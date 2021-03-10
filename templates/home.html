@@ -19,7 +19,10 @@
             <div class="card-body">
               <h5 class="card-title">Easy Mode</h5>
               <p class="card-text">In this challenge mode, you will take on 5 questions back to back! If you get them all right, you will get bonus points! If you get one wrong, you get nothing!</p>
-              <a href="#" class="btn btn-success">Play Challenge</a>
+              <form action="{% url 'challenge' user.pk %}?ch=5" method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <input class="btn btn-success" type="submit" value="Accept Challenge" />
+              </form>
             </div>
           </div>
         </div>
@@ -28,7 +31,10 @@
             <div class="card-body">
               <h5 class="card-title">Medium Mode</h5>
               <p class="card-text">In this challenge mode, you will take on 10 questions back to back! If you get them all right, you will get bonus points! If you get one wrong, you get nothing!</p>
-              <a href="#" class="btn btn-warning">Play Challenge</a>
+              <form action="{% url 'challenge' user.pk %}?ch=10" method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <input class="btn btn-warning" type="submit" value="Accept Challenge" />
+              </form>
             </div>
           </div>
         </div>
@@ -37,7 +43,10 @@
             <div class="card-body">
               <h5 class="card-title">Hard Mode</h5>
               <p class="card-text">In this challenge mode, you will take on 15 questions back to back! If you get them all right, you will get bonus points! If you get one wrong, you get nothing!</p>
-              <a href="#" class="btn btn-danger">Play Challenge</a>
+              <form action="{% url 'challenge' user.pk %}?ch=15" method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <input class="btn btn-danger" type="submit" value="Accept Challenge" />
+              </form>
             </div>
           </div>
         </div>

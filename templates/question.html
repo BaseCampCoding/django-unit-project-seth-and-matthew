@@ -2,10 +2,17 @@
 {% block content %}
 <strong>Current Points: {{ user.points }}</strong>
 <br>
+{% if user.max_challenge_streak == 0 %}
 <strong>Current Streak: {{ user.streak }}</strong>
 <br>
 <strong>Longest Streak: {{ user.longest_streak }}</strong>
 <br>
+{% else %}
+<strong>Current Streak: {{ user.challenge_streak }}</strong>
+<br>
+<strong>Goal: {{ user.max_challenge_streak }}</strong>
+<br>
+{% endif %}
 <p>{{ question.description }}</p>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 

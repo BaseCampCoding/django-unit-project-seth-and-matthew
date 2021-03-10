@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import CustomUser
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView
 from .forms import CreateUserForm, ChangeUserForm
 from django.urls import reverse_lazy
 from questions.models import Question
@@ -24,6 +24,16 @@ def get_possible_questions_id(q_category):
     while not ran in q_ids:
         ran = random.randint(1, maxi_id)
     return ran
+
+class ChallengeView(UpdateView):
+    model = get_user_model()
+    fields = []
+    success_url = reverse_lazy("home")
+    def form_valid(self, form):
+        form.instance.challenge_streak = 0
+        e = int(self.request.GET.get('ch', 5))
+        form.instance.max_challenge_streak = e
+        return super().form_valid(form)
 
 class SignUpView(CreateView):
     form_class = CreateUserForm
