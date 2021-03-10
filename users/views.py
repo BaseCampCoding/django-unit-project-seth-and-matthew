@@ -47,6 +47,7 @@ class HomePageView(ListView):
 class UserProfile(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = "users/user_profile.html"
+    context_object_name = "profile_user"
 
 class LeaderboardView(ListView):
     model = get_user_model()

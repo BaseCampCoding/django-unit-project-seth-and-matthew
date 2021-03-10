@@ -2,7 +2,7 @@
 {% block content %}
 <h3>Top 10 Users</h3>
 {% for u in object_list %}
-<strong>{{ u.username }} / {{ u.points }}</strong>
+<strong><a href="{% url 'user_profile' u.pk %}">{{ u.username }}</a> / {{ u.points }}</strong>
 <br>
 {% endfor %}
 {% endblock content %}
