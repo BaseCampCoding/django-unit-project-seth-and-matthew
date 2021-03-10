@@ -9,3 +9,5 @@ class CustomUser(AbstractUser):
     streak = models.PositiveIntegerField(default=0)
     longest_streak = models.PositiveIntegerField(default=0)
     badges = models.CharField(max_length=100, default="")
+    challenge_streak = models.PositiveIntegerField(default=0)
+    max_challenge_streak = models.PositiveIntegerField(default=0)
