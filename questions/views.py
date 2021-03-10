@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import UpdateView, View
+from django.views.generic import UpdateView, TemplateView
 from .forms import AnswerForm
 from .models import Question
 from django.urls import reverse_lazy
@@ -10,7 +10,7 @@ import random
 from users.views import get_possible_questions_id
 # Create your views here.
 
-class CongratsView(View):
+class CongratsView(TemplateView):
     template_name = "completed.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
