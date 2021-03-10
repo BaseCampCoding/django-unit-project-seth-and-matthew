@@ -2,12 +2,12 @@
 {% block content %}
 <div>
     <header>
-        <h1>{{ user.username }}</h1>
+        <h1>{{ profile_user.username }}</h1>
     </header>
     <div>
-        <h3>{{ user.username }}'s Stats</h3>
-        <p>Current Streak: {{ user.streak }}</p>
-        <p>Longest Streak: {{ user.longest_streak }}</p>
+        <h3>{{ profile_user.username }}'s Stats</h3>
+        <p>Current Streak: {{ profile_user.streak }}</p>
+        <p>Longest Streak: {{ profile_user.longest_streak }}</p>
     </div>
 </div>
 {% endblock content %}

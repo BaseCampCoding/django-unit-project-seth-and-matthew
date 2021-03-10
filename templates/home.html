@@ -6,13 +6,13 @@
         <p>Click the button on the right to start answering random questions from any category! Each time you get a question right, you earn points! The more questions you get right in a row, the more points you earn for each question!</p>
     </div>
     <div class="item2">
-        <a href="{% url 'question' random_number %}" class="text-decoration-none">
+        <a href="{% url 'question' random_number %}?random=t" class="text-decoration-none">
             <button class="text-black-50 font-weight-bold btn btn-light btn-lg btn-huge">Play!</button>
         </a>
     </div>
 </div>
 <div id="main-page bg-light">
-    <p><a href="{% url 'question' cat_Python%}">Python questions</a></p>
+    <p><a href="{% url 'question' cat_Python %}">Python questions</a></p>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card h-100">

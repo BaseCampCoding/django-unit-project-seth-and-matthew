@@ -9,7 +9,7 @@
 <p>{{ question.description }}</p>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'question' question.id %}" method="post">
+<form action="{% url 'question' question.id %}?random={{ request.GET.random }}" method="post">
 {% csrf_token %}
 {% for choice in question.possible_answers %}
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice }}">

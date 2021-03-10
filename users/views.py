@@ -18,7 +18,6 @@ def get_possible_questions_id(q_category):
     this function returns the PK of a random question object that fits the question category.
     """
     q_ids = Question.objects.filter(category=q_category).values_list("pk", flat=True)
-    print(q_category)
     q_ids = list(q_ids)
     maxi_id = max(q_ids)
     ran = None
@@ -28,7 +27,7 @@ def get_possible_questions_id(q_category):
 
 class SignUpView(CreateView):
     form_class = CreateUserForm
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
 
@@ -48,3 +47,12 @@ class HomePageView(ListView):
 class UserProfile(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = "users/user_profile.html"
+    context_object_name = "profile_user"
+
+class LeaderboardView(ListView):
+    model = get_user_model()
+    template_name = "leaderboard/top_score.html"
+    def get_queryset(self):
+        object_list = CustomUser.objects.order_by("-points")[:10]
+        
+        return object_list
