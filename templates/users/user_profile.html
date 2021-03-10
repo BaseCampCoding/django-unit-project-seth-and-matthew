@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div>
     <header>
@@ -8,6 +9,11 @@
         <h3>{{ profile_user.username }}'s Stats</h3>
         <p>Current Streak: {{ profile_user.streak }}</p>
         <p>Longest Streak: {{ profile_user.longest_streak }}</p>
+    </div>
+    <div>
+        {% for b in badge_list %}
+        <img src="{% static b %}" alt="Badge">
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}
