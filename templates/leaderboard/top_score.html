@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Top 10 Users</h3>
+{% for u in object_list %}
+<strong>{{ u.username }} / {{ u.points }}</strong>
+<br>
+{% endfor %}
+{% endblock content %}
