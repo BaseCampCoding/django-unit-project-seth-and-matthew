@@ -14,13 +14,11 @@
 
 #landing {
   height: 90vh;
-  padding: 100px;
 }
 
 .btn-huge {
   padding: 100px 100px 100px 100px;
   border-radius: 50%;
-  color: red;
 }
 
 .grid-container {
