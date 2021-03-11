@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from users.views import HomePageView, SignUpView, UserProfile, LeaderboardView, ChallengeView
+from users.views import (
+    HomePageView,
+    SignUpView,
+    UserProfile,
+    LeaderboardView,
+    ChallengeView,
+)
 from questions.views import AnswerQuestion, CongratsView
 
 urlpatterns = [
@@ -28,4 +34,5 @@ urlpatterns = [
     path("leaderboard/score/", LeaderboardView.as_view(), name="score_board"),
     path("challenge/<int:pk>/", ChallengeView.as_view(), name="challenge"),
     path("congrats/", CongratsView.as_view(), name="congrats"),
+    path("friends/", include("friends.urls", namespace="friends")),
 ]
