@@ -15,7 +15,7 @@ class CustomUserAdmin(UserAdmin):
 UserAdmin.fieldsets += (
     (
         "Custom fields set",
-        {"fields": ("points", "streak", "longest_streak", "challenge_streak", "max_challenge_streak", "badges")},
+        {"fields": ("points", "streak", "longest_streak", "challenge_streak", "max_challenge_streak", "badges", "completed_problems")},
     ),
 )
 
