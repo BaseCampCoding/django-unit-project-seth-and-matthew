@@ -12,3 +12,11 @@
 09 - Get 25000 points
 10 - Get 50000 points
 11 - Get 100000 points
+## Python Badges
+12 - Complete 25 Python questions
+13 - Complete 100 Python questions
+14 - Complete 250 Python questions
+## HTML/CSS Badges
+15 - Complete 25 HTML questions
+16 - Complete 100 HTML questions
+17 - Complete 250 HTML questions
