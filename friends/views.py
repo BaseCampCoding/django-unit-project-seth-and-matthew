@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
 import json
 from users.models import CustomUser
@@ -11,8 +11,8 @@ def friend_request_view(request, *args, **kwargs):
     context = {}
     user = request.user
     if user.is_authenticated:
-        user_id = kwargs.get("user.id")
-        account = CustomUser.objects.get(pk=user_id)
+        user_id = user.id
+        account = get_object_or_404(CustomUser, pk=user_id)
         if account == user:
             friend_requests = FriendRequest.objects.filter(
                 receiver=account, is_active=True
@@ -22,7 +22,7 @@ def friend_request_view(request, *args, **kwargs):
             return HttpResponse("You can't view another users friend requests.")
     else:
         redirect("login")
-    return render(request, "snippets/friend_requests.html", context)
+    return render(request, "snippets/friend_request.html", context)
 
 
 def send_friend_request(request, *args, **kwargs):
