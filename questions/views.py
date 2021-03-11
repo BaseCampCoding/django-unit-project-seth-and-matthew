@@ -59,7 +59,29 @@ def AnswerQuestion(request, question_id):
                 request.user.max_challenge_streak = 0
         if request.user.streak > request.user.longest_streak:
             request.user.longest_streak = request.user.streak
-        decomp = decompile_answered_questions_str(request.user.completed_problems)
+        if len(request.user.completed_problems) >  0:
+            decomp = decompile_answered_questions_str(request.user.completed_problems)
+            i = 0
+            lent = len(decomp)
+            found = False
+            while i < lent:
+                if decomp[i][1] == question.category:
+                    decomp[i] = (str(int(decomp[i][0]) + 1), question.category)
+                    found = True
+                    break
+                i += 1
+            if not found:
+                decomp.append((1, question.category))
+            temp = []
+            for i in decomp:
+                temp.append(str(i[0]))
+                temp.append(i[1])
+            request.user.completed_problems = ''.join(temp)
+        else:
+            decomp = None
+            request.user.completed_problems = '1' + question.category
+        
+                    
         badge = check_badge(
             request.user.points,
             request.user.streak,
@@ -127,22 +149,22 @@ def check_badge(points, streak, badge_str, completed_list):
             if points >= con[1] and not con[2] in badge_str:
                 re_value = con[2]
                 break
-        if con[0] == 2:
+        if con[0] == 2 and completed_list:
             t = None
             for i in completed_list:
                 if i[1] == "Python":
-                    t = i[0]
+                    t = int(i[0])
                     break
-            if t and t >= con[1] and not con[2] in badge_str:
+            if t and t >= int(con[1]) and not con[2] in badge_str:
                 re_value = con[2]
                 break
-        if con[0] == 3:
+        if con[0] == 3 and completed_list:
             t = None
             for i in completed_list:
                 if i[1] == "HTML":
-                    t = i[0]
+                    t = int(i[0])
                     break
-            if t and t >= con[1] and not con[2] in badge_str:
+            if t and t >= int(con[1]) and not con[2] in badge_str:
                 re_value = con[2]
                 break
     return re_value
