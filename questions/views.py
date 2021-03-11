@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 import random
 from users.views import get_possible_questions_id
+import json
 
 # Create your views here.
 
@@ -75,8 +76,11 @@ def AnswerQuestion(request, question_id):
             temp = []
             for i in decomp:
                 temp.append(str(i[0]))
-                temp.append(i[1])
-            request.user.completed_problems = ''.join(temp)
+                temp.append(i[1]) 
+            temp = ''.join(temp)
+            # temp_json_save = json.loads(temp)
+            # temp = json.dumps(temp_json_save)
+            request.user.completed_problems = temp
         else:
             decomp = None
             request.user.completed_problems = '1' + question.category
