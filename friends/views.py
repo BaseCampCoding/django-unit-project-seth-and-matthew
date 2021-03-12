@@ -36,6 +36,7 @@ def send_friend_request(request, *args, **kwargs):
                 friend_requests = FriendRequest.objects.filter(
                     sender=user, receiver=receiver
                 )
+                friend_requests.save()
                 try:
                     for request in friend_requests:
                         if request.is_active:

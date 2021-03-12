@@ -4,6 +4,7 @@
 <div>
     <header>
         <h1>{{ profile_user.username }}</h1>
+		<p><a href="{% url 'friends:friend_requests' request.user.id %}">Friend Requests ({{ friend_requests|length }})</a></p>
     </header>
     <div>
         <h3>{{ profile_user.username }}'s Stats</h3>
