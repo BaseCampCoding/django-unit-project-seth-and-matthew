@@ -20,6 +20,8 @@ class CongratsView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["earned"] = self.request.GET.get("earned")
         return context
+class BadgesView(TemplateView):
+    template_name = "badges.html"
 
 
 def AnswerQuestion(request, question_id):

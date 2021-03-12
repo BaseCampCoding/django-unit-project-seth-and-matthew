@@ -22,7 +22,7 @@ from users.views import (
     LeaderboardView,
     ChallengeView,
 )
-from questions.views import AnswerQuestion, CongratsView
+from questions.views import AnswerQuestion, CongratsView, BadgesView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -34,4 +34,5 @@ urlpatterns = [
     path("leaderboard/score/", LeaderboardView.as_view(), name="score_board"),
     path("challenge/<int:pk>/", ChallengeView.as_view(), name="challenge"),
     path("congrats/", CongratsView.as_view(), name="congrats"),
+    path("badges", BadgesView.as_view(), name="badges"),
 ]

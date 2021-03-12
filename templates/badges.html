@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    strong {
+        padding-left: 1.8em;
+    }
+    img {
+        padding-bottom: 1em;
+    }
+</style>
+<h2>All available badges</h2>
+<img src="{% static 'images/01.png' %}" alt="Badge"> <strong>Get a streak of 10</strong>
+<br>
+<img src="{% static 'images/02.png' %}" alt="Badge"><strong>Get a streak of 25</strong>
+<br>
+<img src="{% static 'images/03.png' %}" alt="Badge"><strong>Get a streak of 50</strong>
+<br>
+<img src="{% static 'images/04.png' %}" alt="Badge"><strong>Get a streak of 100</strong>
+<br>
+<img src="{% static 'images/05.png' %}" alt="Badge"><strong>Get 1000 points</strong>
+<br>
+<img src="{% static 'images/06.png' %}" alt="Badge"><strong>Get 2500 points</strong>
+<br>
+<img src="{% static 'images/07.png' %}" alt="Badge"><strong>Get 5000 points</strong>
+<br>
+<img src="{% static 'images/08.png' %}" alt="Badge"><strong>Get 10k points</strong>
+<br>
+<img src="{% static 'images/09.png' %}" alt="Badge"><strong>Get 25k points</strong>
+<br>
+<img src="{% static 'images/10.png' %}" alt="Badge"><strong>Get 50k points</strong>
+<br>
+<img src="{% static 'images/11.png' %}" alt="Badge"><strong>Get 100k points</strong>
+<br>
+<img src="{% static 'images/12.png' %}" alt="Badge"><strong>Complete 10 Python problems</strong>
+<br>
+<img src="{% static 'images/13.png' %}" alt="Badge"><strong>Complete 25 Python problems</strong>
+<br>
+<img src="{% static 'images/14.png' %}" alt="Badge"><strong>Complete 250 Python problems</strong>
+<br>
+<img src="{% static 'images/15.png' %}" alt="Badge"><strong>Complete 10 HTML/CSS problems</strong>
+<br>
+<img src="{% static 'images/16.png' %}" alt="Badge"><strong>Complete 25 HTML/CSS problems</strong>
+<br>
+<img src="{% static 'images/17.png' %}" alt="Badge"><strong>Complete 250 HTML/CSS problems</strong>
+<br>
+
+{% endblock content %}
