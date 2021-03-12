@@ -1,4 +1,4 @@
-.background {
+main {
   background: #304352; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
@@ -10,6 +10,8 @@
     #d7d2cc,
     #304352
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 #landing {
@@ -17,7 +19,7 @@
 }
 
 .btn-huge {
-  padding: 100px 100px 100px 100px;
+  padding: 80px 80px 80px 80px;
   border-radius: 50%;
 }
 
@@ -30,6 +32,7 @@
   grid-area: welcome;
   align-self: center;
   justify-self: left;
+  padding: 20px;
 }
 .item2 {
   grid-area: button;

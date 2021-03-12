@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "questions",
     "users",
-    "friends",
 ]
 
 AUTH_USER_MODEL = "users.CustomUser"
