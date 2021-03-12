@@ -34,5 +34,4 @@ urlpatterns = [
     path("leaderboard/score/", LeaderboardView.as_view(), name="score_board"),
     path("challenge/<int:pk>/", ChallengeView.as_view(), name="challenge"),
     path("congrats/", CongratsView.as_view(), name="congrats"),
-    path("friends/", include("friends.urls", namespace="friends")),
 ]
