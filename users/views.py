@@ -8,7 +8,18 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 import random
 
-all_categories = ["Python"]  # IMPORTANT
+all_categories = [
+    "Python",
+    "HTML/CSS",
+    "Django",
+    "Math",
+    "Science",
+    "History",
+    "Video Games",
+    "Movies",
+    "Food",
+    "Sports",
+]  # IMPORTANT
 
 # Create your views here.
 
