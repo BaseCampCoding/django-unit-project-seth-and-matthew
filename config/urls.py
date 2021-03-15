@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from users.views import (
     AcceptFriendRequest,
+    DeclineFriendRequest,
     HomePageView,
     SendFriendRequest,
     SignUpView,
@@ -45,6 +46,11 @@ urlpatterns = [
         "accept_friend_request/<int:requestID>/",
         AcceptFriendRequest,
         name="accept_friend_request",
+    ),
+    path(
+        "decline_friend_request/<int:requestID>/",
+        DeclineFriendRequest,
+        name="decline_friend_request",
     ),
     path("badges", BadgesView.as_view(), name="badges"),
 ]

@@ -16,6 +16,7 @@ main {
 
 #landing {
   height: 90vh;
+  padding: 100px;
 }
 
 .btn-huge {
@@ -37,4 +38,32 @@ main {
 .item2 {
   grid-area: button;
   align-self: center;
+}
+
+#leaderboard {
+  display: grid;
+  justify-content: center;
+}
+#profile {
+  display: grid;
+  grid-template-areas: "profile-main friends";
+}
+
+#profile-main {
+  grid-area: profile-main;
+  justify-self: center;
+  width: 50vw;
+  height: fit-content;
+  background-color: white;
+  border-radius: 5%;
+  margin-top: 10px;
+}
+#friends {
+  grid-area: friends;
+  justify-self: right;
+  margin-right: 20px;
+  margin-top: 10px;
+  background-color: whitesmoke;
+  border-radius: 5%;
+  height: 90vh;
 }

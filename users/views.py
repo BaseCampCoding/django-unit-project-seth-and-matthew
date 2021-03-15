@@ -107,3 +107,12 @@ def AcceptFriendRequest(request, requestID):
         return HttpResponse("Friend request accepted.")
     else:
         return HttpResponse("Friend request not accepted.")
+
+
+def DeclineFriendRequest(request, requestID):
+    friendRequest = FriendRequest.objects.get(id=requestID)
+    if friendRequest.receiver == request.user:
+        friendRequest.delete()
+        return HttpResponse("Friend request declined.")
+    else:
+        return HttpResponse("Friend request not declined.")

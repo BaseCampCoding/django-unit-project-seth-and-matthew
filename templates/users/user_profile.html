@@ -1,35 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div>
-    <header>
-        <h1>{{ profile_user.username }}</h1>
-		{% if profile_user != request.user and profile_user not in request.user.friends.all %}
-			<p><a href="/send_friend_request/{{ profile_user.id }}/">Send Friend Request</a></p>
-		{% elif profile_user == request.user %}
-		<h1>Friend Requests:</h1>
-			{% for friend_request in user.receiver.all %}
-				<h1>{{friend_request.user}}</h1>
-				<a href="/accept_friend_request/{{friend_request.id}}/">Accept</a>
+<div id="profile">
+	<div id="profile-main">
+		<header>
+			<h1>{{ profile_user.username }}</h1>
+			{% if profile_user != request.user and profile_user not in request.user.friends.all %}
+				<p><a href="/send_friend_request/{{ profile_user.id }}/">Send Friend Request</a></p>
+			{% endif %}
+		</header>
+		<div>
+			<p>Current Streak: {{ profile_user.streak }}</p>
+			<p>Longest Streak: {{ profile_user.longest_streak }}</p>
+			<p>Completed Problems: {{profile_user.completed_problems }}</p>
+		</div>
+		<div>
+			{% for b in badge_list %}
+			<img src="{% static b %}" alt="Badge">
 			{% endfor %}
-		{% endif %}
-    </header>
-    <div>
-        <h3>{{ profile_user.username }}'s Stats</h3>
-        <p>Current Streak: {{ profile_user.streak }}</p>
-        <p>Longest Streak: {{ profile_user.longest_streak }}</p>
-    </div>
-	<div>
+		</div>
+	</div>
+	<div id="friends">
 		<h1>Friends:</h1>
-		{% for friend in request.user.friends.all %}
+		{% for friend in profile_user.friends.all %}
 		<p>{{ friend }}</p>
 		{% endfor %}
+		{% if profile_user == request.user %}
+			<h1>Friend Requests:</h1>
+				{% for friend_request in user.receiver.all %}
+					<p>{{friend_request.user}} <a href="/accept_friend_request/{{friend_request.id}}/"><img src="https://img.icons8.com/offices/24/000000/checkmark.png"/></a> <a href="/decline_friend_request/{{friend_request.id}}/"><img src="https://img.icons8.com/material/24/fa314a/xbox-x.png"/></a></p>
+				{% endfor %}
+		{% endif %}
 	</div>
-    <div>
-        {% for b in badge_list %}
-        <img src="{% static b %}" alt="Badge">
-        {% endfor %}
-    </div>
 </div>
-
 {% endblock content %}
