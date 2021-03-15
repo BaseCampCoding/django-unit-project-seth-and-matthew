@@ -22,3 +22,6 @@ class FriendRequest(models.Model):
     receiver = models.ForeignKey(
         CustomUser, on_delete=models.CASCADE, related_name="receiver"
     )
+
+    def __str__(self):
+        return f"Sender: {self.user}, Receiver: {self.receiver}"
