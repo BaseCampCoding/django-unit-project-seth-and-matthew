@@ -24,7 +24,7 @@ from users.views import (
     LeaderboardView,
     ChallengeView,
 )
-from questions.views import AnswerQuestion, CongratsView
+from questions.views import AnswerQuestion, CongratsView, BadgesView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -46,4 +46,5 @@ urlpatterns = [
         AcceptFriendRequest,
         name="accept_friend_request",
     ),
+    path("badges", BadgesView.as_view(), name="badges"),
 ]
