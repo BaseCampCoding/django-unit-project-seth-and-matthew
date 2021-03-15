@@ -11,14 +11,14 @@ import random
 all_categories = [
     "Python",
     "HTML/CSS",
-    "Django",
-    "Math",
-    "Science",
-    "History",
-    "Video Games",
-    "Movies",
-    "Food",
-    "Sports",
+    # "Django",
+    # "Math",
+    # "Science",
+    # "History",
+    # "Video Games",
+    # "Movies",
+    # "Food",
+    # "Sports",
 ]  # IMPORTANT
 
 # Create your views here.
@@ -31,7 +31,10 @@ def get_possible_questions_id(q_category):
     """
     q_ids = Question.objects.filter(category=q_category).values_list("pk", flat=True)
     q_ids = list(q_ids)
-    maxi_id = max(q_ids)
+    if q_ids:
+        maxi_id = max(q_ids)
+    else:
+        return 1
     ran = None
     while not ran in q_ids:
         ran = random.randint(1, maxi_id)

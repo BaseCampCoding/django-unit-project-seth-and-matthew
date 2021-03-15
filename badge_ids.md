@@ -20,3 +20,7 @@
 15 - Complete 25 HTML questions
 16 - Complete 100 HTML questions
 17 - Complete 250 HTML questions
+### Django Badges
+18 - Complete 25 Django questions
+19 - Complete 100 Django questions
+20 - Complete 250 Django questions
