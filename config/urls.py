@@ -19,6 +19,7 @@ from users.views import (
     AcceptFriendRequest,
     DeclineFriendRequest,
     HomePageView,
+    RemoveFriend,
     SendFriendRequest,
     SignUpView,
     UserProfile,
@@ -52,5 +53,6 @@ urlpatterns = [
         DeclineFriendRequest,
         name="decline_friend_request",
     ),
+    path("remove_friend/<int:userID>/", RemoveFriend, name="remove_friend"),
     path("badges", BadgesView.as_view(), name="badges"),
 ]

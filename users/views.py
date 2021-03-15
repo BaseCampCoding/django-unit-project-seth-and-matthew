@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse
 from .models import CustomUser, FriendRequest
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 from .forms import CreateUserForm, ChangeUserForm
@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from questions.models import Question
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 import random
 
 all_categories = [
@@ -123,8 +124,9 @@ def SendFriendRequest(request, userID):
         user=user, receiver=receiver
     )
     if created:
-        return HttpResponse("Friend request sent.")
+        return redirect(f"/user/{receiver.id}")
     else:
+        messages.error
         return HttpResponse("Friend request was already sent.")
 
 
@@ -146,3 +148,11 @@ def DeclineFriendRequest(request, requestID):
         return HttpResponse("Friend request declined.")
     else:
         return HttpResponse("Friend request not declined.")
+
+
+def RemoveFriend(request, userID):
+    user = request.user
+    friend = CustomUser.objects.get(id=userID)
+    user.friends.remove(friend)
+    friend.friends.remove(user)
+    return HttpResponse(f"{friend} removed from friend list.")
