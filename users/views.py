@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import CustomUser
+from django.shortcuts import render, HttpResponse
+from .models import CustomUser, FriendRequest
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 from .forms import CreateUserForm, ChangeUserForm
 from django.urls import reverse_lazy
@@ -95,3 +95,26 @@ class LeaderboardView(ListView):
         object_list = CustomUser.objects.order_by("-points")[:10]
 
         return object_list
+
+
+def SendFriendRequest(request, userID):
+    user = request.user
+    receiver = CustomUser.objects.get(id=userID)
+    friendRequest, created = FriendRequest.objects.get_or_create(
+        user=user, receiver=receiver
+    )
+    if created:
+        return HttpResponse("Friend request sent.")
+    else:
+        return HttpResponse("Friend request was already sent.")
+
+
+def AcceptFriendRequest(request, requestID):
+    friendRequest = FriendRequest.objects.get(id=requestID)
+    if friendRequest.receiver == request.user:
+        friendRequest.user.friends.add(friendRequest.receiver)
+        friendRequest.receiver.friends.add(friendRequest.user)
+        friendRequest.delete()
+        return HttpResponse("Friend request accepted.")
+    else:
+        return HttpResponse("Friend request not accepted.")
