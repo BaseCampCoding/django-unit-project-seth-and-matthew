@@ -15,12 +15,12 @@
 ## Python Badges
 12 - Complete 25 Python questions
 13 - Complete 100 Python questions
-14 - Complete 250 Python questions
+14 - Complete 200 Python questions
 ## HTML/CSS Badges
 15 - Complete 25 HTML questions
 16 - Complete 100 HTML questions
-17 - Complete 250 HTML questions
+17 - Complete 200 HTML questions
 ### Django Badges
 18 - Complete 25 Django questions
 19 - Complete 100 Django questions
-20 - Complete 250 Django questions
+20 - Complete 200 Django questions
