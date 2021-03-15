@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import (
+    AcceptFriendRequest,
     HomePageView,
+    SendFriendRequest,
     SignUpView,
     UserProfile,
     LeaderboardView,
@@ -34,4 +36,14 @@ urlpatterns = [
     path("leaderboard/score/", LeaderboardView.as_view(), name="score_board"),
     path("challenge/<int:pk>/", ChallengeView.as_view(), name="challenge"),
     path("congrats/", CongratsView.as_view(), name="congrats"),
+    path(
+        "send_friend_request/<int:userID>/",
+        SendFriendRequest,
+        name="send_friend_request",
+    ),
+    path(
+        "accept_friend_request/<int:requestID>/",
+        AcceptFriendRequest,
+        name="accept_friend_request",
+    ),
 ]
