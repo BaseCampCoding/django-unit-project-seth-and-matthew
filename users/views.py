@@ -11,14 +11,14 @@ import random
 all_categories = [
     "Python",
     "HTML/CSS",
-    "Django",
-    "Math",
-    "Science",
-    "History",
-    "Video Games",
-    "Movies",
-    "Food",
-    "Sports",
+    # "Django",
+    # "Math",
+    # "Science",
+    # "History",
+    # "Video Games",
+    # "Movies",
+    # "Food",
+    # "Sports",
 ]  # IMPORTANT
 
 # Create your views here.
