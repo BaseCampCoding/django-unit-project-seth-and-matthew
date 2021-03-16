@@ -15,7 +15,10 @@
 		<div>
 			<p>Current Streak: {{ profile_user.streak }}</p>
 			<p>Longest Streak: {{ profile_user.longest_streak }}</p>
-			<p>Completed Problems: {{profile_user.completed_problems }}</p>
+			<h5>Completed Problems</h5>
+			{% for i in completed_list %}
+			<p>{{ i.1 }}: {{ i.0 }}</p>
+			{% endfor %}
 		</div>
 		<div>
 			{% for b in badge_list %}

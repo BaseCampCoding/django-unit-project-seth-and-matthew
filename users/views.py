@@ -12,8 +12,8 @@ import random
 all_categories = [
     "Python",
     "HTML/CSS",
-    # "Django",
-    # "Math",
+    "Django",
+    "Math",
     # "Science",
     # "History",
     # "Video Games",
@@ -23,8 +23,6 @@ all_categories = [
 ]  # IMPORTANT
 
 # Create your views here.
-
-
 def get_possible_questions_id(q_category):
     """
     used to generate a question for a given category.
@@ -88,6 +86,24 @@ class UserProfile(LoginRequiredMixin, DetailView):
             result.append("images/" + temp_badge[i] + temp_badge[i + 1] + ".png")
             i += 2
         context["badge_list"] = result
+        temp_list = list()
+        int_val = ""
+        str_val = ""
+        prev = None
+        for i in self.object.completed_problems:
+            if i.isdigit() and prev and prev.isdigit():
+                int_val += i
+            elif i.isdigit() and prev and not prev.isdigit():
+                temp_list.append(tuple([int(int_val), str_val]))
+                int_val = i
+                str_val = ""
+            elif i.isdigit():
+                int_val += i
+            else:
+                str_val += i
+            prev = i
+        temp_list.append(tuple([int(int_val), str_val]))
+        context["completed_list"] = temp_list
         return context
 
 

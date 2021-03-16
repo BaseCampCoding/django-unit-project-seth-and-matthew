@@ -12,7 +12,32 @@ import json
 
 # Create your views here.
 
-
+def decompile_answered_questions_str(string) -> list:
+    """returns an answered questions string as a list of tuples
+    > decomplie_answered_questions_str("4Python3Math")
+    [
+        (4, "Python"),
+        (3, "Math")
+    ]
+    """
+    temp_list = list()
+    int_val = ""
+    str_val = ""
+    prev = None
+    for i in string:
+        if i.isdigit() and prev and prev.isdigit():
+            int_val += i
+        elif i.isdigit() and prev and not prev.isdigit():
+            temp_list.append(tuple([int(int_val), str_val]))
+            int_val = i
+            str_val = ""
+        elif i.isdigit():
+            int_val += i
+        else:
+            str_val += i
+        prev = i
+    temp_list.append(tuple([int(int_val), str_val]))
+    return temp_list
 class CongratsView(TemplateView):
     template_name = "completed.html"
 
@@ -141,11 +166,18 @@ badge_conditions = [
     (3, 25, "15"),
     (3, 100, "16"),
     (3, 200, "17"),
+    (4, 25, "18"),
+    (4, 100, "19"),
+    (4, 200, "20"),
+    (5, 25, "21"),
+    (5, 100, "22"),
+    (5, 200, "23"),
 ]
 
 
 def check_badge(points, streak, badge_str, completed_list):
     re_value = None
+    badge_str = [badge_str[i:i+2] for i in range(0, len(badge_str), 2)]
     for con in badge_conditions:
         if con[0] == 0:
             if streak >= con[1] and not con[2] in badge_str:
@@ -173,32 +205,26 @@ def check_badge(points, streak, badge_str, completed_list):
             if t and t >= int(con[1]) and not con[2] in badge_str:
                 re_value = con[2]
                 break
+        if con[0] == 4 and completed_list:
+            t = None
+            for i in completed_list:
+                if i[1] == "Django":
+                    t = int(i[0])
+                    break
+            if t and t >= int(con[1]) and not con[2] in badge_str:
+                re_value = con[2]
+                break 
+        if con[0] == 5 and completed_list:
+            t = None
+            for i in completed_list:
+                if i[1] == "Math":
+                    t = int(i[0])
+                    break
+            if t and t >= int(con[1]) and not con[2] in badge_str:
+                re_value = con[2]
+                break 
     return re_value
 
 
-def decompile_answered_questions_str(string) -> list:
-    """returns an answered questions string as a list of tuples
-    > decomplie_answered_questions_str("4Python3Math")
-    [
-        (4, "Python"),
-        (3, "Math")
-    ]
-    """
-    temp_list = list()
-    int_val = ""
-    str_val = ""
-    prev = None
-    for i in string:
-        if i.isdigit() and prev and prev.isdigit():
-            int_val += i
-        elif i.isdigit() and prev and not prev.isdigit():
-            temp_list.append(tuple([int(int_val), str_val]))
-            int_val = i
-            str_val = ""
-        elif i.isdigit():
-            int_val += i
-        else:
-            str_val += i
-        prev = i
-    temp_list.append(tuple([int(int_val), str_val]))
-    return temp_list
+
+
