@@ -43,7 +43,7 @@ def get_possible_questions_id(q_category):
 class ChallengeView(UpdateView):
     model = get_user_model()
     fields = []
-    success_url = reverse_lazy("home")
+    success_url = reverse_lazy("question", args=(random.randint(1, Question.objects.count()-1),))
 
     def form_valid(self, form):
         form.instance.challenge_streak = 0
