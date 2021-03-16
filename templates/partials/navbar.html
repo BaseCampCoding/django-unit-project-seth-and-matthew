@@ -8,6 +8,9 @@
         <ul class="navbar-nav">
           <li><a class="nav-item nav-link" href="{% url 'badges' %}">All Badges</a></li>
           <li><a class="nav-item nav-link" href="{% url 'score_board' %}">Leaderboard</a></li>
+          {% if user.is_staff %}
+          <li><a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+          {% endif %}
           {% if user.is_authenticated %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
