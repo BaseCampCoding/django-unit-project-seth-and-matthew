@@ -108,10 +108,11 @@ def SendFriendRequest(request, userID):
         user=user, receiver=receiver
     )
     if created:
+        messages.success(request, "Friend request sent.")
         return redirect(f"/user/{receiver.id}")
     else:
-        messages.error
-        return HttpResponse("Friend request was already sent.")
+        messages.error(request, "Friend request already created.")
+        return redirect(f"/user/{receiver.id}")
 
 
 def AcceptFriendRequest(request, requestID):
@@ -120,18 +121,22 @@ def AcceptFriendRequest(request, requestID):
         friendRequest.user.friends.add(friendRequest.receiver)
         friendRequest.receiver.friends.add(friendRequest.user)
         friendRequest.delete()
-        return HttpResponse("Friend request accepted.")
+        messages.success(request, "Friend request accepted.")
+        return redirect(f"/user/{request.user.id}")
     else:
-        return HttpResponse("Friend request not accepted.")
+        messages.error(request, "Friend request not accepted.")
+        return redirect(f"/user/{request.user.id}")
 
 
 def DeclineFriendRequest(request, requestID):
     friendRequest = FriendRequest.objects.get(id=requestID)
     if friendRequest.receiver == request.user:
         friendRequest.delete()
-        return HttpResponse("Friend request declined.")
+        messages.success(request, "Friend request declined.")
+        return redirect(f"/user/{request.user.id}")
     else:
-        return HttpResponse("Friend request not declined.")
+        messages.error(request, "Friend request not declined.")
+        return redirect(f"/user/{request.user.id}")
 
 
 def RemoveFriend(request, userID):
@@ -139,4 +144,5 @@ def RemoveFriend(request, userID):
     friend = CustomUser.objects.get(id=userID)
     user.friends.remove(friend)
     friend.friends.remove(user)
-    return HttpResponse(f"{friend} removed from friend list.")
+    messages.success(request, "Friend removed.")
+    return redirect(f"/user/{request.user.id}")

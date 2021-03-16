@@ -14,6 +14,13 @@ main {
   min-height: 100vh;
 }
 
+.messages {
+  display: grid;
+  justify-self: center;
+  list-style: none;
+  font-weight: bold;
+}
+
 #landing {
   height: 90vh;
   padding: 100px;
@@ -23,7 +30,88 @@ main {
   padding: 80px 80px 80px 80px;
   border-radius: 50%;
 }
+.main-btn {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.main-card {
+  padding: 10px;
+}
 
+.row {
+  padding: 15px;
+}
+#python {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+#html {
+  background-image: url(https://www.seekpng.com/png/full/141-1415523_responsive-web-design-with-html5-css3-html-and.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+#django {
+  background-image: url(https://cdn.iconscout.com/icon/free/png-256/django-2-282855.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+#math {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxYz0QD-058i6OiAcqpFLALIiXiL4jycv8deOZj2u70YTflZALrW45E6HlrUd0zbGT2Os&usqp=CAU);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+#science {
+  background-image: url(https://www.wpclipart.com/science/atoms_molecules/atom_stylized.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+#history {
+  background-image: url(https://i.pinimg.com/originals/18/18/88/18188820e5da19a3908aeb18af5246b5.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+#video-games {
+  background-image: url(https://www.prsformusic.com/-/media/images/mmagazine/images/2016/07/videogamejoystick.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+#movies {
+  background-image: url(https://thumbs.dreamstime.com/b/movie-film-company-logo-design-vector-template-movie-film-company-logo-design-inspiration-vector-template-167661473.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+
+#food {
+  background-image: url(https://media.istockphoto.com/vectors/crossed-spoon-and-fork-restaurant-and-food-logo-design-vector-id1043971984?k=6&m=1043971984&s=170667a&w=0&h=hm07ut1KGFPW_pfLvX956nr0joLbt8zKHasoY9CNEAI=);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
+#sports {
+  background-image: url(https://henryfuentes.com/wp-content/uploads/2014/04/SPORTS_LOGO_LARGE.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100%;
+}
 .grid-container {
   display: grid;
   grid-template-areas: "welcome button button button";
@@ -48,7 +136,6 @@ main {
   display: grid;
   grid-template-areas: "profile-main friends";
 }
-
 #profile-main {
   grid-area: profile-main;
   justify-self: center;

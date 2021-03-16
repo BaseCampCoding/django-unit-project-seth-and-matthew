@@ -13,8 +13,95 @@
 </div>
 {% if user.is_authenticated %}
 <div id="main-page bg-light">
-    <p><a href="{% url 'question' cat_Python %}">Python questions</a></p>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <button class="btn btn-primary main-btn" type="button" data-bs-toggle="collapse" data-bs-target="#categories" aria-expanded="false" aria-controls="categories">
+      Categories
+    </button>
+    <div class="row row-cols-1 row-cols-md-3 g-4 collapse" id="categories">
+      <div class="col main-card">
+        <div class="card h-100" id="python">
+          <div class="card-body">
+            <h5 class="card-title">Python Questions</h5>
+            <p class="card-text"><a href="{% url 'question' cat_Python %}">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card h-100" id="html">
+          <div class="card-body">
+            <h5 class="card-title">HTML/CSS Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card h-100" id="django">
+          <div class="card-body">
+            <h5 class="card-title">Django Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card h-100" id="math">
+          <div class="card-body">
+            <h5 class="card-title">Math Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card h-100" id="science">
+          <div class="card-body">
+            <h5 class="card-title">Science Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card h-100" id="history">
+          <div class="card-body">
+            <h5 class="card-title">History Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card h-100" id="video-games">
+          <div class="card-body">
+            <h5 class="card-title">Video Game Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card h-100" id="movies">
+          <div class="card-body">
+            <h5 class="card-title">Movie Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card">
+        <div class="card h-100" id="food">
+          <div class="card-body">
+            <h5 class="card-title">Food Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col main-card" id="last-card">
+        <div class="card h-100" id="sports">
+          <div class="card-body">
+            <h5 class="card-title">Sports Questions</h5>
+            <p class="card-text"><a href="#">Play now!</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary main-btn" type="button" data-bs-toggle="collapse" data-bs-target="#challenges" aria-expanded="false" aria-controls="challenges">
+      All Challenges
+    </button>
+    <div class="row row-cols-1 row-cols-md-3 g-4 collapse" id="challenges">
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
