@@ -1,31 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-<strong>Current Points: {{ user.points }}</strong>
-<br>
-{% if user.max_challenge_streak == 0 %}
-<strong>Current Streak: {{ user.streak }}</strong>
-<br>
-<strong>Longest Streak: {{ user.longest_streak }}</strong>
-<br>
-{% else %}
-<strong>Current Streak: {{ user.challenge_streak }}</strong>
-<br>
-<strong>Goal: {{ user.max_challenge_streak }}</strong>
-<br>
-{% endif %}
-<h3>{{ question.title }}</h3>
-<pre>
-{{ question.description }}
-</pre>
+<div id="stats">
+    <strong>Current Points: {{ user.points }}</strong>
+    <br>
+    {% if user.max_challenge_streak == 0 %}
+        <strong>Current Streak: {{ user.streak }}</strong>
+        <br>
+        <strong>Longest Streak: {{ user.longest_streak }}</strong>
+        <br>
+        {% else %}
+        <strong>Current Streak: {{ user.challenge_streak }}</strong>
+        <br>
+        <strong>Goal: {{ user.max_challenge_streak }}</strong>
+        <br>
+    {% endif %}
+</div>
+<div id="question" class="card">
+    <h3>{{ question.title }}</h3>
+    <pre>
+    {{ question.description }}
+    </pre>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'question' question.id %}?random={{ request.GET.random }}" method="post">
-{% csrf_token %}
-{% for choice in question.possible_answers %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice }}">
-    <label for="choice{{ forloop.counter }}">{{ choice }}</label><br>
-{% endfor %}
-<input type="submit" value="Submit and Move to next question">
-</form>
+    <form action="{% url 'question' question.id %}?random={{ request.GET.random }}" method="post">
+    {% csrf_token %}
+    {% for choice in question.possible_answers %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice }}">
+        <label for="choice{{ forloop.counter }}">{{ choice }}</label><br>
+    {% endfor %}
+    <input id="submit-btn" type="submit" value="Next Question">
+    </form>
+</div>
+
 {% endblock content %}
