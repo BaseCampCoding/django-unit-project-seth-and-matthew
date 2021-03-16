@@ -14,7 +14,7 @@
 <br>
 {% endif %}
 <h3>{{ question.title }}</h3>
-<p>{{ question.description }}</p>
+<p>{{ question.description|linebreaks }}</p>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <form action="{% url 'question' question.id %}?random={{ request.GET.random }}" method="post">
