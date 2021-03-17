@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render, HttpResponse
-from .models import CustomUser, FriendRequest
+from .models import CustomUser, FriendRequest, Message
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 from .forms import CreateUserForm, ChangeUserForm
 from django.urls import reverse_lazy, reverse
@@ -68,6 +68,8 @@ class SignUpView(CreateView):
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
+class SendMessage(LoginRequiredMixin, CreateView):
+    model = Message
 
 class HomePageView(ListView):
     template_name = "home.html"
