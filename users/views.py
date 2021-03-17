@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render, HttpResponse
 from .models import CustomUser, FriendRequest
 from django.views.generic import CreateView, ListView, DetailView, UpdateView
 from .forms import CreateUserForm, ChangeUserForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from questions.models import Question
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -43,7 +43,18 @@ def get_possible_questions_id(q_category):
 class ChallengeView(UpdateView):
     model = get_user_model()
     fields = []
-    success_url = reverse_lazy("question", args=(random.randint(1, Question.objects.count()-1),))
+
+    # success_url = reverse_lazy("question", args=(random.randint(1, Question.objects.count()-1),))
+    # right here. This is causing it to run Question.objects.count() - 1 as soon as this file is imported.
+    # This is effectively why you want to use `reverse_lazy` here instead of `reverse`.
+    # You use `reverse_lazy` because you aren't promised that your urls are all loaded at this time.
+    # You tend to use `reverse` inside a method (e.g. get_absolute_url) because the URLS will all be loaded by the time that method gets called.
+    # So, you need a bit more laziness.
+    # Instead of saying `success_url = ...` which gets evaluated when this file is imported, you want to move it behind a method that will get called later.
+    # Django provides a `get_success_url` method for exactly this reason.
+
+    def get_success_url(self) -> str:
+        return reverse("question", args=(random.randint(1, Question.objects.count()-1),))
 
     def form_valid(self, form):
         form.instance.challenge_streak = 0
