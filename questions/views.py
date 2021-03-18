@@ -172,6 +172,15 @@ badge_conditions = [
     (5, 25, "21"),
     (5, 100, "22"),
     (5, 200, "23"),
+    (6, 25, "24"),
+    (6, 100, "25"),
+    (6, 200, "26"),
+    (7, 25, "27"),
+    (7, 100, "28"),
+    (7, 200, "29"),
+    (8, 25, "30"),
+    (8, 100, "31"),
+    (8, 200, "32"),
 ]
 
 
@@ -218,6 +227,33 @@ def check_badge(points, streak, badge_str, completed_list):
             t = None
             for i in completed_list:
                 if i[1] == "Math":
+                    t = int(i[0])
+                    break
+            if t and t >= int(con[1]) and not con[2] in badge_str:
+                re_value = con[2]
+                break 
+        if con[0] == 6 and completed_list:
+            t = None
+            for i in completed_list:
+                if i[1] == "Science":
+                    t = int(i[0])
+                    break
+            if t and t >= int(con[1]) and not con[2] in badge_str:
+                re_value = con[2]
+                break 
+        if con[0] == 7 and completed_list:
+            t = None
+            for i in completed_list:
+                if i[1] == "History":
+                    t = int(i[0])
+                    break
+            if t and t >= int(con[1]) and not con[2] in badge_str:
+                re_value = con[2]
+                break
+        if con[0] == 8 and completed_list:
+            t = None
+            for i in completed_list:
+                if i[1] == "Videogames":
                     t = int(i[0])
                     break
             if t and t >= int(con[1]) and not con[2] in badge_str:
