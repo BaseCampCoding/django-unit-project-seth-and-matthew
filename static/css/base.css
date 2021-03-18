@@ -107,14 +107,6 @@ main {
   background-repeat: no-repeat;
   background-position: 100%;
 }
-#sports {
-  background-image: url(https://henryfuentes.com/wp-content/uploads/2014/04/SPORTS_LOGO_LARGE.gif);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 100%;
-  margin: 0 auto;
-  width: 97.5vw;
-}
 .grid-container {
   display: grid;
   grid-template-areas: "welcome button button button";

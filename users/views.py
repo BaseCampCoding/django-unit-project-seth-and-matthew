@@ -19,8 +19,7 @@ all_categories = [
     "Videogames",
     "Movies",
     "Food",
-    # "Sports",
-]  # IMPORTANT
+]  
 
 # Create your views here.
 def get_possible_questions_id(q_category):
