@@ -10,6 +10,8 @@
 					{% csrf_token %}
 					<button type="submit">Send Friend Request</button>
 				</form>
+			{% elif profile_user in request.user.friends.all %}
+			<a href="{% url 'sendmessage' profile_user.id %}">Send Message</a>
 			{% endif %}
 		</header>
 		<div>

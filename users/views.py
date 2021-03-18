@@ -5,7 +5,7 @@ from .forms import CreateUserForm, ChangeUserForm
 from django.urls import reverse_lazy, reverse
 from questions.models import Question
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 import random
 
@@ -68,8 +68,19 @@ class SignUpView(CreateView):
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 
-class SendMessage(LoginRequiredMixin, CreateView):
+class SendMessage(UserPassesTestMixin, LoginRequiredMixin, CreateView):
     model = Message
+    template_name = "messaging/sendmessage.html"
+    fields = ["message_text"]
+    def test_func(self):
+        to_send_user = CustomUser.objects.filter(id=self.request.resolver_match.kwargs["pk"]).get()
+        return self.request.user in to_send_user.friends.all()
+    def get_success_url(self) -> str:
+        return reverse("home")
+    def form_valid(self, form):
+        form.instance.sender = self.request.user
+        form.instance.receiver = CustomUser.objects.filter(id=self.request.resolver_match.kwargs["pk"]).get()
+        return super().form_valid(form)
 
 class HomePageView(ListView):
     template_name = "home.html"
@@ -115,7 +126,8 @@ class UserProfile(LoginRequiredMixin, DetailView):
             else:
                 str_val += i
             prev = i
-        temp_list.append(tuple([int(int_val), str_val]))
+        if int_val:
+            temp_list.append(tuple([int(int_val), str_val]))
         context["completed_list"] = temp_list
         return context
 
