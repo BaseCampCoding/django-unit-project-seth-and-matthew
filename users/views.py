@@ -85,8 +85,9 @@ class SendMessage(UserPassesTestMixin, LoginRequiredMixin, CreateView):
 class ShowMessages(LoginRequiredMixin, ListView):
     model = Message
     template_name = "messaging/mymessages.html"
+    paginate_by = 10
     def get_queryset(self):
-        return Message.objects.filter(receiver__id=self.request.user.id)
+        return Message.objects.filter(receiver__id=self.request.user.id).order_by("-id")
 
 
 class HomePageView(ListView):
