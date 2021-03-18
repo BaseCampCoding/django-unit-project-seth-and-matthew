@@ -17,8 +17,8 @@ all_categories = [
     "Science",
     "History",
     "Videogames",
-    # "Movies",
-    # "Food",
+    "Movies",
+    "Food",
     # "Sports",
 ]  # IMPORTANT
 
