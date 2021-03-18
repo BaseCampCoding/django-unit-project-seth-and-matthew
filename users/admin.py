@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .forms import CreateUserForm, ChangeUserForm
-from .models import CustomUser, FriendRequest
+from .models import CustomUser, FriendRequest, Message
 
 # Register your models here.
 
@@ -32,3 +32,4 @@ UserAdmin.fieldsets += (
 
 admin.site.register(FriendRequest)
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Message)

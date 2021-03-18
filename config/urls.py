@@ -25,6 +25,7 @@ from users.views import (
     UserProfile,
     LeaderboardView,
     ChallengeView,
+    SendMessage
 )
 from questions.views import AnswerQuestion, CongratsView, BadgesView
 
@@ -35,6 +36,7 @@ urlpatterns = [
     path("signup/", SignUpView.as_view(), name="signup"),
     path("question/<int:question_id>/", AnswerQuestion, name="question"),
     path("user/<int:pk>", UserProfile.as_view(), name="user_profile"),
+    path("user/<int:pk>/sendmessage", SendMessage.as_view(), name="sendmessage"),
     path("leaderboard/score/", LeaderboardView.as_view(), name="score_board"),
     path("challenge/<int:pk>/", ChallengeView.as_view(), name="challenge"),
     path("congrats/", CongratsView.as_view(), name="congrats"),
