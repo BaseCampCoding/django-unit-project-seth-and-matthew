@@ -16,6 +16,9 @@ class CustomUser(AbstractUser):
     max_challenge_streak = models.PositiveIntegerField(default=0)
     friends = models.ManyToManyField("CustomUser", blank=True)
 
+    def __str__(self):
+        return self.username
+
 
 class FriendRequest(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="user")
@@ -25,3 +28,11 @@ class FriendRequest(models.Model):
 
     def __str__(self):
         return f"Sender: {self.user}, Receiver: {self.receiver}"
+
+class Message(models.Model):
+    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="sender")
+    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="receiver")
+    message_text = models.CharField(max_length=275, default="")
+
+    def __str__(self):
+        return f"From {self.sender} to {self.receiver}"
