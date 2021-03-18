@@ -112,6 +112,8 @@ main {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 100%;
+  margin: 0 auto;
+  width: 97.5vw;
 }
 .grid-container {
   display: grid;
@@ -162,11 +164,9 @@ main {
 }
 
 #question {
-  display: grid;
-  justify-content: center;
-  position: relative;
-  left: 40%;
+  display: flex;
   width: fit-content;
+  margin: 0 auto;
   border-radius: 5%;
   box-shadow: 5px 5px 5px 5px black;
 }
