@@ -17,8 +17,9 @@
 </div>
 <div id="question" class="card">
     <h3>{{ question.title }}</h3>
+    <h4>{{ question.category }}</h4>
     <pre>
-    {{ question.description }}
+{{ question.description }}
     </pre>
 
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
