@@ -18,6 +18,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="{% url 'user_profile' request.user.id%}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'mymessages' %}">My Messages</a></li>
               <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
             </ul>
           </li>

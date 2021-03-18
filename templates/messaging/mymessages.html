@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for msg in object_list %}
+<h3>{{ msg }}</h3>
+<p>{{ msg.message_text }}</p>
+{% endfor %}
+{% endblock content %}

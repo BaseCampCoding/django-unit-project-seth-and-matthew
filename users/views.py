@@ -74,13 +74,20 @@ class SendMessage(UserPassesTestMixin, LoginRequiredMixin, CreateView):
     fields = ["message_text"]
     def test_func(self):
         to_send_user = CustomUser.objects.filter(id=self.request.resolver_match.kwargs["pk"]).get()
-        return self.request.user in to_send_user.friends.all()
+        return self.request.user in to_send_user.friends.all() and self.request.user != to_send_user
     def get_success_url(self) -> str:
         return reverse("home")
     def form_valid(self, form):
         form.instance.sender = self.request.user
         form.instance.receiver = CustomUser.objects.filter(id=self.request.resolver_match.kwargs["pk"]).get()
         return super().form_valid(form)
+
+class ShowMessages(LoginRequiredMixin, ListView):
+    model = Message
+    template_name = "messaging/mymessages.html"
+    def get_queryset(self):
+        return Message.objects.filter(receiver__id=self.request.user.id)
+
 
 class HomePageView(ListView):
     template_name = "home.html"

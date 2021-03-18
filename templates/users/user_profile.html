@@ -32,11 +32,11 @@
 		<div>
 			<h1>Friends:</h1>
 			{% for friend in profile_user.friends.all %}
-				<p>{{ friend }} 
+				<p><a href="{% url 'user_profile' friend.id%}">{{ friend }}</a></p>
 				{% if profile_user == request.user %}
 					<a href="/remove_friend/{{friend.id}}/">Remove</a>
 				{% endif %}
-				</p>
+				
 			{% endfor %}
 		</div>
 		<div>
