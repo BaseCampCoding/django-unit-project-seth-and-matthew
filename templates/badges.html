@@ -12,45 +12,69 @@
 <header class="centered">
     <h1>All available badges</h1>
 </header>
-<img src="{% static 'images/01.png' %}" alt="Badge"> <strong>Get a streak of 10</strong>
-<br>
-<img src="{% static 'images/02.png' %}" alt="Badge"><strong>Get a streak of 25</strong>
-<br>
-<img src="{% static 'images/03.png' %}" alt="Badge"><strong>Get a streak of 50</strong>
-<br>
-<img src="{% static 'images/04.png' %}" alt="Badge"><strong>Get a streak of 100</strong>
-<br>
-<img src="{% static 'images/05.png' %}" alt="Badge"><strong>Get 1000 points</strong>
-<br>
-<img src="{% static 'images/06.png' %}" alt="Badge"><strong>Get 2500 points</strong>
-<br>
-<img src="{% static 'images/07.png' %}" alt="Badge"><strong>Get 5000 points</strong>
-<br>
-<img src="{% static 'images/08.png' %}" alt="Badge"><strong>Get 10k points</strong>
-<br>
-<img src="{% static 'images/09.png' %}" alt="Badge"><strong>Get 25k points</strong>
-<br>
-<img src="{% static 'images/10.png' %}" alt="Badge"><strong>Get 50k points</strong>
-<br>
-<img src="{% static 'images/11.png' %}" alt="Badge"><strong>Get 100k points</strong>
-<br>
-<img src="{% static 'images/12.png' %}" alt="Badge"><strong>Complete 10 Python problems</strong>
-<br>
-<img src="{% static 'images/13.png' %}" alt="Badge"><strong>Complete 25 Python problems</strong>
-<br>
-<img src="{% static 'images/14.png' %}" alt="Badge"><strong>Complete 200 Python problems</strong>
-<br>
-<img src="{% static 'images/15.png' %}" alt="Badge"><strong>Complete 10 HTML/CSS problems</strong>
-<br>
-<img src="{% static 'images/16.png' %}" alt="Badge"><strong>Complete 25 HTML/CSS problems</strong>
-<br>
-<img src="{% static 'images/17.png' %}" alt="Badge"><strong>Complete 200 HTML/CSS problems</strong>
-<br>
-<img src="{% static 'images/18.png' %}" alt="Badge"><strong>Complete 10 Django problems</strong>
-<br>
-<img src="{% static 'images/19.png' %}" alt="Badge"><strong>Complete 25 Django problems</strong>
-<br>
-<img src="{% static 'images/20.png' %}" alt="Badge"><strong>Complete 200 Django problems</strong>
-<br>
+<button class="btn btn-primary main-btn" type="button" data-bs-toggle="collapse" data-bs-target="#general-badges" aria-expanded="false" aria-controls="general-badges">
+    General Badges
+</button>
+<div id="general-badges" class="collapse row row-cols-2 row-cols-md-2 g-2 collapse">
+    <div>
+        <img src="{% static 'images/01.png' %}" alt="Badge"> <strong>Get a streak of 10</strong>
+        <br>
+        <img src="{% static 'images/02.png' %}" alt="Badge"><strong>Get a streak of 25</strong>
+        <br>
+        <img src="{% static 'images/03.png' %}" alt="Badge"><strong>Get a streak of 50</strong>
+        <br>
+        <img src="{% static 'images/04.png' %}" alt="Badge"><strong>Get a streak of 100</strong>
+        <br>
+    </div>
+    <div>
+        <img src="{% static 'images/05.png' %}" alt="Badge"><strong>Get 1000 points</strong>
+        <br>
+        <img src="{% static 'images/06.png' %}" alt="Badge"><strong>Get 2500 points</strong>
+        <br>
+        <img src="{% static 'images/07.png' %}" alt="Badge"><strong>Get 5000 points</strong>
+        <br>
+        <img src="{% static 'images/08.png' %}" alt="Badge"><strong>Get 10k points</strong>
+        <br>
+        <img src="{% static 'images/09.png' %}" alt="Badge"><strong>Get 25k points</strong>
+        <br>
+        <img src="{% static 'images/10.png' %}" alt="Badge"><strong>Get 50k points</strong>
+        <br>
+        <img src="{% static 'images/11.png' %}" alt="Badge"><strong>Get 100k points</strong>
+        <br>
+    </div>
+</div>
+<button class="btn btn-primary main-btn" type="button" data-bs-toggle="collapse" data-bs-target="#python-badges" aria-expanded="false" aria-controls="python-badges">
+    Python Badges
+</button>
+<div class="collapse" id="python-badges">
+    <img src="{% static 'images/12.png' %}" alt="Badge"><strong>Complete 10 Python problems</strong>
+    <br>
+    <img src="{% static 'images/13.png' %}" alt="Badge"><strong>Complete 25 Python problems</strong>
+    <br>
+    <img src="{% static 'images/14.png' %}" alt="Badge"><strong>Complete 200 Python problems</strong>
+</div>
+<button class="btn btn-primary main-btn" type="button" data-bs-toggle="collapse" data-bs-target="#html-badges" aria-expanded="false" aria-controls="html-badges">
+    HTML/CSS Badges
+</button>
+<div class="collapse" id="html-badges">
+    <br>
+    <img src="{% static 'images/15.png' %}" alt="Badge"><strong>Complete 10 HTML/CSS problems</strong>
+    <br>
+    <img src="{% static 'images/16.png' %}" alt="Badge"><strong>Complete 25 HTML/CSS problems</strong>
+    <br>
+    <img src="{% static 'images/17.png' %}" alt="Badge"><strong>Complete 200 HTML/CSS problems</strong>
+</div>
+<button class="btn btn-primary main-btn" type="button" data-bs-toggle="collapse" data-bs-target="#django-badges" aria-expanded="false" aria-controls="django-badges">
+    Django Badges
+</button>
+<div class="collapse" id="django-badges">
+    <br>
+    <img src="{% static 'images/18.png' %}" alt="Badge"><strong>Complete 10 Django problems</strong>
+    <br>
+    <img src="{% static 'images/19.png' %}" alt="Badge"><strong>Complete 25 Django problems</strong>
+    <br>
+    <img src="{% static 'images/20.png' %}" alt="Badge"><strong>Complete 200 Django problems</strong>
+    <br>
+</div>
 
 {% endblock content %}
