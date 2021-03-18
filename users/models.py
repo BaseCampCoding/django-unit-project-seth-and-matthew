@@ -31,7 +31,7 @@ class FriendRequest(models.Model):
 
 class Message(models.Model):
     sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="sender")
-    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="receiver")
+    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="message_receiver")
     message_text = models.CharField(max_length=275, default="")
 
     def __str__(self):
