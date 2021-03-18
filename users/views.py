@@ -11,7 +11,7 @@ import random
 
 all_categories = [
     "Python",
-    "HTML/CSS",
+    "HTML",
     "Django",
     "Math",
     "Science",
