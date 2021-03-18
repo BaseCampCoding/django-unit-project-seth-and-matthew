@@ -15,8 +15,6 @@ main {
 }
 
 .messages {
-  display: grid;
-  justify-self: center;
   list-style: none;
   font-weight: bold;
 }
@@ -165,7 +163,7 @@ main {
   display: grid;
   justify-content: center;
   position: relative;
-  left: 35%;
+  left: 40%;
   width: fit-content;
   border-radius: 5%;
   box-shadow: 5px 5px 5px 5px black;
