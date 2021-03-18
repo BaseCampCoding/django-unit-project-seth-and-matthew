@@ -9,8 +9,10 @@ from django.urls import reverse
 import random
 from users.views import get_possible_questions_id
 import json
+from django.contrib import messages
 
 # Create your views here.
+
 
 def decompile_answered_questions_str(string) -> list:
     """returns an answered questions string as a list of tuples
@@ -38,6 +40,8 @@ def decompile_answered_questions_str(string) -> list:
         prev = i
     temp_list.append(tuple([int(int_val), str_val]))
     return temp_list
+
+
 class CongratsView(TemplateView):
     template_name = "completed.html"
 
@@ -45,6 +49,8 @@ class CongratsView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["earned"] = self.request.GET.get("earned")
         return context
+
+
 class BadgesView(TemplateView):
     template_name = "badges.html"
 
@@ -72,8 +78,10 @@ def AnswerQuestion(request, question_id):
                     streak = 15
                 request.user.points += 10 + ((streak) * 5)
                 request.user.streak += 1
+                messages.success(request, "Correct!")
             else:
                 request.user.challenge_streak += 1
+                messages.success(request, "Correct!")
                 if request.user.challenge_streak == request.user.max_challenge_streak:
                     z = request.user.max_challenge_streak * 100
                     request.user.points += z
@@ -82,12 +90,14 @@ def AnswerQuestion(request, question_id):
                     congrats = z
         else:
             request.user.streak = 0
+            messages.info(request, "Incorrect.")
             if request.user.max_challenge_streak != 0:
                 request.user.challenge_streak = 0
                 request.user.max_challenge_streak = 0
+                messages.info(request, "Incorrect.")
         if request.user.streak > request.user.longest_streak:
             request.user.longest_streak = request.user.streak
-        if len(request.user.completed_problems) >  0:
+        if len(request.user.completed_problems) > 0:
             decomp = decompile_answered_questions_str(request.user.completed_problems)
             i = 0
             lent = len(decomp)
@@ -103,16 +113,15 @@ def AnswerQuestion(request, question_id):
             temp = []
             for i in decomp:
                 temp.append(str(i[0]))
-                temp.append(i[1]) 
-            temp = ''.join(temp)
+                temp.append(i[1])
+            temp = "".join(temp)
             # temp_json_save = json.loads(temp)
             # temp = json.dumps(temp_json_save)
             request.user.completed_problems = temp
         else:
             decomp = None
-            request.user.completed_problems = '1' + question.category
-        
-                    
+            request.user.completed_problems = "1" + question.category
+
         badge = check_badge(
             request.user.points,
             request.user.streak,
@@ -186,7 +195,7 @@ badge_conditions = [
 
 def check_badge(points, streak, badge_str, completed_list):
     re_value = None
-    badge_str = [badge_str[i:i+2] for i in range(0, len(badge_str), 2)]
+    badge_str = [badge_str[i : i + 2] for i in range(0, len(badge_str), 2)]
     for con in badge_conditions:
         if con[0] == 0:
             if streak >= con[1] and not con[2] in badge_str:
@@ -222,7 +231,7 @@ def check_badge(points, streak, badge_str, completed_list):
                     break
             if t and t >= int(con[1]) and not con[2] in badge_str:
                 re_value = con[2]
-                break 
+                break
         if con[0] == 5 and completed_list:
             t = None
             for i in completed_list:
@@ -231,7 +240,7 @@ def check_badge(points, streak, badge_str, completed_list):
                     break
             if t and t >= int(con[1]) and not con[2] in badge_str:
                 re_value = con[2]
-                break 
+                break
         if con[0] == 6 and completed_list:
             t = None
             for i in completed_list:
@@ -240,7 +249,7 @@ def check_badge(points, streak, badge_str, completed_list):
                     break
             if t and t >= int(con[1]) and not con[2] in badge_str:
                 re_value = con[2]
-                break 
+                break
         if con[0] == 7 and completed_list:
             t = None
             for i in completed_list:
@@ -258,9 +267,5 @@ def check_badge(points, streak, badge_str, completed_list):
                     break
             if t and t >= int(con[1]) and not con[2] in badge_str:
                 re_value = con[2]
-                break 
+                break
     return re_value
-
-
-
-
