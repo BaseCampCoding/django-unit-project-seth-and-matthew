@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for msg in object_list %}
-<h3>{{ msg.sender.username }}</h3>
+<h3><a href="{% url 'user_profile' msg.sender.id %}">{{ msg.sender.username }}</a></h3>
 <p>{{ msg.message_text }}</p>
 {% endfor %}
 <div>
