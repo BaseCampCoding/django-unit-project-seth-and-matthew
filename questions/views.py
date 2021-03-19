@@ -94,7 +94,6 @@ def AnswerQuestion(request, question_id):
             if request.user.max_challenge_streak != 0:
                 request.user.challenge_streak = 0
                 request.user.max_challenge_streak = 0
-                messages.info(request, "Incorrect.")
         if request.user.streak > request.user.longest_streak:
             request.user.longest_streak = request.user.streak
         if len(request.user.completed_problems) > 0:
